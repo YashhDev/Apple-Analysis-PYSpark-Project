@@ -21,14 +21,8 @@ The pipeline is modular, with a **Reader → Transformer → Loader** architectu
 
 ---
 
-## 🏗 Architecture
 
-
-flowchart LR
-    A[CSV / Parquet / Delta Table] -->|Reader Factory| B[PySpark DataFrame]
-    B --> C[Transformation Logic (PySpark SQL)]
-    C -->|Data Lake| D[ADLS Bronze/Silver/Gold]
-    C -->|Data Lakehouse| E[Delta Tables]
+    
 🛠 Tech Stack
 Databricks (Development & Orchestration)
 
@@ -42,23 +36,6 @@ Delta Lake – Data Lakehouse
 
 Spark SQL & PySpark DataFrame API for transformations
 
-
-databricks-etl-factory/
-│
-├── src/
-│   ├── reader_factory.py     # Implements Factory Pattern for multiple sources
-│   ├── transformations.py    # Business transformation logic
-│   ├── loader.py              # Writes to Data Lake & Lakehouse
-│
-├── data/
-│   ├── csv/                   # Sample CSV files
-│   ├── parquet/               # Sample Parquet files
-│   ├── delta/                 # Sample Delta tables
-│
-├── notebooks/
-│   ├── etl_pipeline.ipynb     # Main Databricks ETL notebook
-│
-└── README.md
 
 
 Business Logic Implemented
@@ -95,11 +72,15 @@ FROM (
 )
 WHERE purchase_date > first_purchase
 
+
+
 📸 Sample Output
 customer_id	product	purchase_date
 101	Airpods	2024-06-12
 102	iPhone	2024-05-21
 103	MacBook	2024-07-05
+
+
 
 📈 Key Highlights
 Factory Pattern for easily extending to more data sources.
