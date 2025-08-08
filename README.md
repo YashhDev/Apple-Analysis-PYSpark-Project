@@ -23,7 +23,7 @@ The pipeline is modular, with a **Reader → Transformer → Loader** architectu
 
 ## 🏗 Architecture
 
-```mermaid
+
 flowchart LR
     A[CSV / Parquet / Delta Table] -->|Reader Factory| B[PySpark DataFrame]
     B --> C[Transformation Logic (PySpark SQL)]
